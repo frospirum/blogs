@@ -1,5 +1,5 @@
 ---
-title: 小刻都也能看懂的解包教程
+title: 小刻都能看懂的解包教程
 tags: technique
 show_edit_on_github: false
 modify_date: 2021-08-28
@@ -13,25 +13,25 @@ modify_date: 2021-08-28
 >请勿以任何形式传播此教程，也不要将利用此教程获取到的资源用于任何未经版权方允许的用途。所造成的后果由违规者自行承担，本站所有者不承担任何人士的违规行为所引致的任何赔偿。
 >以上注意事项适用于后续所有涉及第三方资源的教程，使用此教程者视为自愿接受以上声明的约束，之后不再另附。
 
-##### 获取资源
+#### 获取资源
 
 数据分为两部分，不需要安装后额外下载的数据可以在[官网](https://ak.hypergryph.com/downloads/android_lastest)下载安装包，将拓展名由`.apk`改为`.zip`，解压并提取`assets\AB\Android`目录。
 
 需要额外下载的数据可以在**游戏下载并解压数据包后**从`/sdcard/Android/data/com.hypergryph.arknights/files/AB/Android`目录下获取。
 
-##### 工具的介绍与获取
+#### 工具的介绍与获取
 
 > AssetStudio is a tool for exploring, extracting and exporting assets and assetbundles.   
 > [下载地址](https://github.com/Perfare/AssetStudio/releases) 
 > [作者Blog](https://www.perfare.net/)
 
-![image-20210828123848037](C:\Users\Oblisetta\AppData\Roaming\Typora\typora-user-images\image-20210828123848037.png)
+![image-01](https://raw.githubusercontent.com/frospirum/blogs/main/assets/images/posts/2021-08-28-assetunpack/01.png)
 
 以 v0.16.0 为例，下载`AssetStudio.v0.16.0.zip`并解压，双击 AssetStudioGUI.exe 启动软件。
 
-![image-20210828124757095](C:\Users\Oblisetta\AppData\Roaming\Typora\typora-user-images\image-20210828124757095.png)
+![image-02](https://raw.githubusercontent.com/frospirum/blogs/main/assets/images/posts/2021-08-28-assetunpack/02.png)
 
-##### 资源提取
+#### 资源提取
 
 - 运行`AssetStudioGUI.exe` -> `File` -> `Load folder` -> 选择`Android `文件夹-> 等待文件载入
 
@@ -48,7 +48,7 @@ modify_date: 2021-08-28
 
 至此我们就获得了游戏内的资源。至于里面都有什么，各部分分别放在在哪里，各位自己去翻一翻就知道了。下面单独列出几种素材的二次处理。
 
-##### 立绘
+#### 立绘
 
 立绘位于提取出的一堆素材中名为`Texture2D`的文件夹下，但是我们发现这些立绘都被拆分成一张图 + 一个白底的形式，需要把它合成到一起。方法有很多种，这里采用GalPhotoAuto来处理。[下载地址](https://blog.ztjal.info/?dl_id=10)
 
@@ -118,9 +118,14 @@ MsgBox "文件重命名处理完成"
 - 将要合并的立绘的两张图放到同一个文件夹下（可以同时放多个人物的立绘），把脚本文件放到这个文件夹里并运行，处理成功后会弹出“文件重命名处理完成”消息，这时每个人物的立绘都被修改成了`xxx.png`和`xxx_m.png`的格式。
 
 - 将之前下载的 GalPhotoAuto 解压后运行`GalPhotoAutoB.exe`，点击`(2)添加处理图片`把立绘所在文件夹拖到 `模式二（添加文件夹）` 下面的框里 
+
+  ![image-03](https://raw.githubusercontent.com/frospirum/blogs/main/assets/images/posts/2021-08-28-assetunpack/03.png)
+
 - 点击`(2)选择合成规则` ->`常规合成规则` -> `源图和ALPHA分开为两张图 `选中 `模式二：添加文件夹，自动合成，以"_m"结尾的合成， xxx.bmp是源图，xxx_m.bmp是作为ALPHA`然后点击`执行`两张图就被合并为一个完整的立绘。
 
-###### 音频
+  ![image-04](https://raw.githubusercontent.com/frospirum/blogs/main/assets/images/posts/2021-08-28-assetunpack/04.png)
+
+#### 音频
 
 语音和BGM都在`AudioClip`文件夹里，没什么好说的。值得注意的是为了能让 BGM 循环起来，音频被拆成了`xxx_intro.wav` 和`xxx_loop.wav`两部分，把这两部分拼起来即可。
 
