@@ -39,10 +39,15 @@ modify_date: 2021-08-28
 - 点击 `Filter Type`，会出现多个类型，这里挑几个来说
 
 >AudioClip: 音乐
+>
 >Mesh: 实体模型
+>
 >Sprite: 一种特殊的图片，可以像普通的3D游戏物体一样对待
+>
 >Texture2D: 二维图片
+>
 >MonoBehaviour: Unity 脚本基类
+>
 >TextAsset: 文本对象
 
 - 点击`Export` -> `Filtered assets` -> 导出所筛选资源
