@@ -58,7 +58,7 @@ modify_date: 2021-08-28
 
 立绘位于提取出的一堆素材中名为`Texture2D`的文件夹下，但是我们发现这些立绘都被拆分成一张图 + 一个白底的形式，需要把它合成到一起。方法有很多种，这里采用GalPhotoAuto来处理。[下载地址](https://blog.ztjal.info/?dl_id=10)
 
-- 新建一个txt文件，把以下代码复制进去并以`GB2312`编码保存，将拓展名由`.txt`改为`.vbs`，当然也可以点这里直接下载现成的脚本
+- 新建一个txt文件，把以下代码复制进去并以`GB2312`编码保存，将拓展名由`.txt`改为`.vbs`，当然也可以[点这里直接下载现成的脚本](https://1drv.ms/u/s!Ap9e3ADdTBPXjW0yzY_7Cr966qp4?e=ZWFh3U)
 
 ```vbscript
 'title - 批量修改文件名(+_m)
