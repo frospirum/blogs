@@ -2,7 +2,7 @@
 title: 小刻都能看懂的解包教程
 tags: technique
 show_edit_on_github: false
-modify_date: 2021-08-28
+modify_date: 2022-02-06
 ---
 
 <!--more-->
@@ -51,12 +51,17 @@ modify_date: 2021-08-28
 >TextAsset: 文本对象
 
 - 点击`Export` -> `Filtered assets` -> 导出所筛选资源
+- 点击`Export` -> `All assets` -> 导出所有资源
 
 至此我们就获得了游戏内的资源。至于里面都有什么，各部分分别放在在哪里，各位自己去翻一翻就知道了。下面单独列出几种素材的二次处理。
+
+需要注意的是，`All assets` 会导出**全部**数据，消耗大量时间。如果你只想导出某项资源，建议在AssetStudio中打开单个文件并导出。
 
 #### 立绘
 
 立绘位于提取出的一堆素材中名为`Texture2D`的文件夹下，但是我们发现这些立绘都被拆分成一张图 + 一个白底的形式，需要把它合成到一起。方法有很多种，这里采用GalPhotoAuto来处理。[下载地址](https://blog.ztjal.info/?dl_id=10)
+
+下面采用的是批量处理的方法，如果你要处理的图片数量不多，也可以采用手动添加的方式。该方法会在下一节“小人动画”中提到。
 
 - 新建一个txt文件，把以下代码复制进去并以`GB2312`编码保存，将拓展名由`.txt`改为`.vbs`，当然也可以[点这里直接下载现成的脚本](https://1drv.ms/u/s!Ap9e3ADdTBPXjW0yzY_7Cr966qp4?e=ZWFh3U)
 
@@ -135,5 +140,42 @@ MsgBox "文件重命名处理完成"
 
 语音和BGM都在`AudioClip`文件夹里，没什么好说的。值得注意的是为了能让 BGM 循环起来，音频被拆成了`xxx_intro.wav` 和`xxx_loop.wav`两部分，把这两部分拼起来即可。
 
+#### 动态立绘
 
+在提取这类素材的时候，我们往往只需要某一个/几个角色的数据，这个时候全部导出未免太不划算。实际上，角色有关的美术资源都位于`/sdcard/Android/data/com.hypergryph.arknights/files/AB/Android/arts/dynchars`目录下
 
+  ![image-05](https://raw.githubusercontent.com/frospirum/blogs/main/assets/images/posts/2021-08-28-assetunpack/05.png)
+
+这里以Nearl the Radiant Knight为例
+
+- 点击`File` -> `Load file` -> 选择 `char_1014_nearl2_2.ab` -> `Export` -> `All assets` -> 导出所有资源
+
+  ![image-06](https://raw.githubusercontent.com/frospirum/blogs/main/assets/images/posts/2021-08-28-assetunpack/06.png)
+
+- 打开`Texture2D`文件夹，我们可以看到熟悉的拆分图，这里一共有四张。
+
+  ![image-07](https://raw.githubusercontent.com/frospirum/blogs/main/assets/images/posts/2021-08-28-assetunpack/07.png)
+
+- 使用`GalPhotoAuto`,点击`(2)添加处理图片`将图片拖拽进对应的框里，左侧是白底，右侧是有颜色的面。
+
+  ![image-08](https://raw.githubusercontent.com/frospirum/blogs/main/assets/images/posts/2021-08-28-assetunpack/08.png)
+
+- 点击`(2)选择合成规则` ->`常规合成规则` -> `源图和ALPHA分开为两张图 `选中 `模式一：手动添加底面，底（左边）放ALPHA，面（右边）放源图`然后点击`执行`进行合并。
+
+  ![image-09](https://raw.githubusercontent.com/frospirum/blogs/main/assets/images/posts/2021-08-28-assetunpack/09.png)
+
+使用相同的办法合并另一张图，将文件名里的`[alpha]_`删除，至此图片素材整理完毕。
+
+接下来打开`TextAsset`文件夹，将里面文件的`.prefab`后缀删除，并将文件和刚才的图片放在同一文件夹下
+
+  ![image-10](https://raw.githubusercontent.com/frospirum/blogs/main/assets/images/posts/2021-08-28-assetunpack/10.png)
+
+接下来要用到的工具是`skeletonViewer`, [下载地址](http://esotericsoftware.com/files/skeletonViewer-3.5.51.jar)
+
+*注意：该工具需要Java运行环境，如何配置清自行搜索，这里不再解释。*
+
+打开skeletonViewer，点击`open`并选中`dyn_illust_char_1014_nearl2.skel`,如果立绘不能正常显示，请检查所有文件的文件名是否一致（拓展名不算）。
+
+  ![image-11](https://raw.githubusercontent.com/frospirum/blogs/main/assets/images/posts/2021-08-28-assetunpack/11.png)
+
+  图中黄色部分为相关调节选项，还望各位自行摸索。
