@@ -148,7 +148,7 @@ MsgBox "文件重命名处理完成"
 
 这里以Nearl the Radiant Knight为例
 
-- 点击`File` -> `Load file` -> 选择 `char_1014_nearl2_2.ab` -> `Export` -> `All assets` -> 导出所有资源
+- 打开`AssetStudio`，点击`File` -> `Load file` -> 选择 `char_1014_nearl2_2.ab` -> `Export` -> `All assets` -> 导出所有资源
 
   ![image-06](https://raw.githubusercontent.com/frospirum/blogs/main/assets/images/posts/2021-08-28-assetunpack/06.png)
 
